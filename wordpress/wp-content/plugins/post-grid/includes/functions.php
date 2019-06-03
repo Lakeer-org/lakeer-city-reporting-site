@@ -1148,7 +1148,7 @@ add_action('wp_ajax_post_grid_layout_add_elements', 'post_grid_layout_add_elemen
 
 function post_grid_get_categories($post_id){
 	
-	if(current_user_can('manage_options')){
+	//if(current_user_can('manage_options')){
 
 		if(isset($_POST['post_types'])){
 			
@@ -1254,7 +1254,7 @@ function post_grid_get_categories($post_id){
 			echo 'No categories found.';
 			}
 		
-		}
+		//}
 	
 	
 		

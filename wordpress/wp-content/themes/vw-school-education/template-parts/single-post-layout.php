@@ -64,7 +64,7 @@ get_header();
 	<?php }
 	else if(get_field("block".$block_counter."type") == "image"){
 	?>
-	<section class="home_banner_area block<?php echo $block_counter;?> pb-2" style="position: relative;">
+	<section class="block<?php echo $block_counter;?> pb-2" style="position: relative;">
 		<div class="container">
 			<div class="banner_content">
 				<div class="image-container">
@@ -103,7 +103,7 @@ get_header();
 	<?php }
 	else if(get_field("block".$block_counter."type") == "image-text"){
 	?>
-	<section class="home_banner_area block<?php echo $block_counter;?> pb-2">
+	<section class="block<?php echo $block_counter;?> pb-2">
 		<div class="row ml-2">
 			<div class="col-6">
 				<?php if(get_field("block".$block_counter."combimagetext_firstelement") == "image"){?>
@@ -130,7 +130,7 @@ get_header();
 	<?php }
 	else if(get_field("block".$block_counter."type") == "image-image"){
 	?>
-	<section class="home_banner_area block<?php echo $block_counter;?> pb-2">
+	<section class="block<?php echo $block_counter;?> pb-2">
 		<div class="row ml-2">
 			<div class="col-6">
 				<div class="image-container">
@@ -149,7 +149,7 @@ get_header();
 	<?php }
 	else if(get_field("block1type") == "image-video"){
 	?>
-	<section class="home_banner_area block<?php echo $block_counter;?> pb-2">
+	<section class="block<?php echo $block_counter;?> pb-2">
 		<div class="row ml-2">
 			<div class="col-6">
 				<?php if(get_field("block".$block_counter."combimagevideo_firstelement") == "image"){?>
@@ -176,7 +176,7 @@ get_header();
 	<?php }
 	else if(get_field("block".$block_counter."type") == "image-map"){
 	?>
-	<section class=" pb-2">
+	<section class="pb-2">
 		<div class="row ml-2">
 			<div class="col-6">
 				<?php if(get_field("block".$block_counter."combimagemap_firstelement") == "image"){?>
@@ -203,7 +203,7 @@ get_header();
 	<?php }
 	else if(get_field("block".$block_counter."type") == "image-embed"){
 	?>
-	<section class=" pb-2">
+	<section class="pb-2">
 		<div class="row ml-2">
 			<div class="col-6">
 				<?php if(get_field("block".$block_counter."combimagecusthtml_firstelement") == "image"){?>
@@ -230,7 +230,7 @@ get_header();
 	<?php }
 	else if(get_field("block".$block_counter."type") == "video-text"){
 	?>
-	<section class=" pb-2">
+	<section class="pb-2">
 		<div class="row ml-2">
 			<div class="col-6">
 				<?php if(get_field("block".$block_counter."combvideotext_firstelement") == "video"){?>
@@ -251,7 +251,7 @@ get_header();
 	<?php }
 	else if(get_field("block".$block_counter."type") == "video-video"){
 	?>
-	<section class="home_banner_area block<?php echo $block_counter;?> pb-2">
+	<section class="block<?php echo $block_counter;?> pb-2">
 		<div class="row ml-2">
 			<div class="col-6">
 				<div class="row"><?php echo get_field("block".$block_counter."combvideovideo_video1");?></div>
@@ -264,7 +264,7 @@ get_header();
 	<?php }
 	else if(get_field("block".$block_counter."type") == "video-map"){
 	?>
-	<section class=" pb-2">
+	<section class="pb-2">
 		<div class="row ml-2">
 			<div class="col-6">
 				<?php if(get_field("block".$block_counter."combvideomap_firstelement") == "image"){?>
@@ -285,7 +285,7 @@ get_header();
 	<?php }
 	else if(get_field("block".$block_counter."type") == "map-text"){
 	?>
-	<section class="home_banner_area block<?php echo $block_counter;?> pb-2">
+	<section class="block<?php echo $block_counter;?> pb-2">
 		<div class="row ml-2">
 			<div class="col-6">
 				<?php if(get_field("block".$block_counter."combmaptext_firstelement") == "map"){?>
@@ -306,7 +306,7 @@ get_header();
 	<?php }
 	else if(get_field("block".$block_counter."type") == "map-map"){
 	?>
-	<section class="home_banner_area block<?php echo $block_counter;?> pb-2">
+	<section class="block<?php echo $block_counter;?> pb-2">
 		<div class="row ml-2">
 			<div class="col-6">
 				<div id="map<?php echo $block_counter;?>_text" class="mapElement" mapTypeId="<?php echo get_field("block".$block_counter."combmaptypemaptype_maptype1");?>" style="width:100%;height:500px;"></div>
@@ -319,7 +319,7 @@ get_header();
 	<?php }
 	else if(get_field("block".$block_counter."type") == "embed-text"){
 	?>
-	<section class="home_banner_area block<?php echo $block_counter;?> pb-2">
+	<section class="block<?php echo $block_counter;?> pb-2">
 		<div class="row ml-2">
 			<div class="col-6">
 				<div id="map<?php echo $block_counter;?>_text" class="mapElement" mapTypeId="<?php echo get_field("block".$block_counter."combcustomhtmlcustomhtml_customhtml1");?>" style="width:100%;height:500px;"></div>
