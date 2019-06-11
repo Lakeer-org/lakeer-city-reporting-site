@@ -48,6 +48,23 @@ Table of Content:
 /*=================== fonts ====================*/
 @import url("https://fonts.googleapis.com/css?family=Poppins:500,600");
 /*---------------------------------------------------- */
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: 300;
+  src: url(../fonts/Montserrat-Light.otf) format("otf");
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: 400;
+  src: url(../fonts/Montserrat-Regular.ttf) format("ttf");
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: 600;
+  src: url(../fonts/Montserrat-SemiBold.otf) format("otf");
+}
 /*----------------------------------------------------*/
 body {
   line-height: 25px;
@@ -2970,17 +2987,25 @@ section img.full-width-image{
 }
 
 .city-page-analysis-title{
-  width: 100%;
+/*  width: 100%;
   font-size: 30pt;
   padding-top: 45vh;
   text-align: center;
-  color: #fdbb00 !important;
+  color: #fdbb00 !important;*/
+	width: 100%;
+	font-size: 60px;
+	font-family: 'Montserrat', sans-serif;
+	color: #fff;
+	padding-top: 45vh;
+	text-align: center;
 }
 .city-page-analysis-subtitle{
   width: 100%;
-  font-size: 15pt;
+  font-size: 20px;
   text-align: center;
   color: #FFF;
+  font-family:'Montserrat', sans-serif;
+  line-height: 1.167;
 }
 .city-page-analysis-notes{
   width: 100%;
@@ -3016,7 +3041,7 @@ section img.full-width-image{
 	left: 0vh !important;
 }
 .city-page-center-block{
-	margin: 0rem 4rem;
+	/*margin: 0rem 4rem;*/
 }
 
 
@@ -3061,12 +3086,32 @@ section img.full-width-image{
 	padding-left:0px !important; 
 }
 
-.city-page-center-block .main_title{
-	pading: 0px !important;
+.city-page-center-block .main_title {
+	/*pading: 0px !important;
 	margin: 0px !important;
 	margin-left: 1.2rem !important;
+	font-weight: bold;*/
 	padding-top: 3rem !important;
-	font-weight: bold;
+	font-weight: 700;
+	font-family: 'Montserrat', sans-serif;
+	margin-bottom: 42px;
+	font-size: 36px;
+	text-align: center;
+	margin-top: 23px;
+	color: #303030;
+}
+@media (max-width: 1024px) {
+.city-page-center-block .main_title {
+	font-size: 24px;
+	line-height:1.5;
+}
+}
+.city-page-center-block .main_title::after{
+	background: url('../wp-content/uploads/2019/02/hr-blue.png') no-repeat center;
+	height: 70px !important;
+	content: '\A';
+	width: 100%;
+	display: block;
 }
 
 .grid-items{
@@ -3075,16 +3120,28 @@ section img.full-width-image{
 }
 
 .all-post-button{
-	padding: 10px;
-    border: 2px solid #ccc9c9;
-    position: absolute;
-    bottom: 20px;
-	color: rgb(100,100,100) !important;
+	border-radius: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    padding-right: 25px;
+    padding-left: 25px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-top: 50px;
+    height: 20%;
+    background: #005588;
+    color: white;
+    border: 2px solid #005588;
+}
+.all-post-button:hover{
+    color: #005588;
+    background: white;
+    border: 2px solid #005588;
 }
 
 .grid-items .layer-media{
 	text-align: center !important;
-	background-image: linear-gradient(rgb(20,45,104), rgb(240,240,240));
+	background-image:linear-gradient(rgb(175,175,175), rgb(220,220,220));/* linear-gradient(rgb(20,45,104), rgb(240,240,240));*/
 	border-bottom: 1px solid rgb(240,240,240);
 }
 
@@ -3102,7 +3159,7 @@ section img.full-width-image{
 	font-size: 13pt !important;
 }
 .grid-items .item {
-	background-color: #dcdcdc !important;
+	background-color: transparent;/*#dcdcdc !important;*/
 	position: relative !important;
 }
 .grid-items .item .layer-nav-icons {
@@ -3115,7 +3172,8 @@ section img.full-width-image{
 }
 
 .skin.flat .layer-content{
-	padding: 5px 0px !important;	
+	/*padding: 5px 0px !important;*/	
+	padding: 20px !important;
 }
 
 
@@ -3132,8 +3190,17 @@ section img.full-width-image{
 }
 
 .image_card_below_title{
-	color: #0B79CA !important;
+	/*color: #0B79CA !important;
+	padding: 5px 0px !important;*/
+	color: #606060;
 	padding: 5px 0px !important;
+	font-size: 18px !important;
+	font-weight: 700;
+	font-family: Roboto;
+	text-transform: capitalize;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
 }
 
 .image_card_overlay_notes{
@@ -3150,7 +3217,10 @@ section img.full-width-image{
 
 .image_card_below_notes{
 	color: #888 !important;	
-	padding: 5px 0px !important;
+	padding: 20px 0px !important;
+	font-size: 14px !important;
+	font-family: Roboto;
+	height: 120px;
 }
 
 .block_title{

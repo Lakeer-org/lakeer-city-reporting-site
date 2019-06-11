@@ -66,8 +66,9 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 	if($items_bg_color_type=='fixed'){
 		
 		$html .= '#post-grid-'.$post_id.' .item{
-			background:'.$items_bg_color.';
-	
+			background:#ffffff;//'.$items_bg_color.';
+			box-shadow: 0px 0px 2px 0px #C1C1C1;
+			padding:10px;
 			}';
 			
 		}
@@ -132,7 +133,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 		
 		
 		$html .= '#post-grid-'.$post_id.' {
-			padding:'.$container_padding.';
+			/* padding:'.$container_padding.'; */
 			background: '.$container_bg_color.' url('.$container_bg_image.') repeat scroll 0 0;
 		}';
 
@@ -262,7 +263,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 
 		if($items_height_style == 'fixed_height' || $items_height_style == 'auto_height'){
 
-			$html .= 'height:'.$items_height.';';
+			$html .= 'height:350px;';//'.$items_height.';';
 		}
 		elseif($items_height_style=='max_height'){
 			$html .= 'max-height:'.$items_height.';';

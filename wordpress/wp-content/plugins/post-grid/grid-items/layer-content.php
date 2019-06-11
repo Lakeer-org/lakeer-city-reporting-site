@@ -56,9 +56,9 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 		
 		
 		if($item_key=='title'){
-			$html_content.='<div class="element element_'.$item_id.' '.$item_key.' image_card_overlay_title"  >';
+			/*$html_content.='<div class="element element_'.$item_id.' '.$item_key.' image_card_overlay_title"  >';
 			$html_content.= apply_filters('post_grid_filter_grid_item_title',wp_trim_words(get_the_title(), $char_limit,''));
-			$html_content.='</div>';
+			$html_content.='</div>';*/
 			
 			$html_content.='<div class="element element_'.$item_id.' '.$item_key.' image_card_below_title"  >';
 			$html_content.= apply_filters('post_grid_filter_grid_item_title',wp_trim_words(get_the_title(), $char_limit,''));
@@ -73,10 +73,10 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 			if(strlen($excerpt_removed_shortcode) > $char_limit){
 				$excerptDotDotDot = '...';
 			}
-			$html_content.= '<div class="post-grid-card-description image_card_overlay_notes">';
+			/*$html_content.= '<div class="post-grid-card-description image_card_overlay_notes">';
 			$html_content.= apply_filters('post_grid_filter_grid_item_excerpt',wp_trim_words($excerpt_removed_shortcode, $char_limit-4,''));
 			$html_content.= $excerptDotDotDot;
-			$html_content.= '</div>';
+			$html_content.= '</div>';*/
 			
 			$html_content.= '<div class="post-grid-card-description image_card_below_notes">';
 			$html_content.= apply_filters('post_grid_filter_grid_item_excerpt',wp_trim_words($excerpt_removed_shortcode, $char_limit-4,''));

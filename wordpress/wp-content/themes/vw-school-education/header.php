@@ -25,6 +25,8 @@ $topbackgroundimage = get_field('topbackgroundimage');
 <?php wp_head(); ?>
 <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
   <script src='https://unpkg.com/leaflet.gridlayer.googlemutant@latest/Leaflet.GoogleMutant.js'></script>
 <style type="text/css" id="custom-background-css">

@@ -862,6 +862,7 @@ h2#reply-title {
   font-weight:bold;
   border-top:2px dotted #7e7e7e;
   padding:40px 0 0 0;
+  display:none;
 }
 #comments h3.comment-reply-title{
   font-size:20px;
