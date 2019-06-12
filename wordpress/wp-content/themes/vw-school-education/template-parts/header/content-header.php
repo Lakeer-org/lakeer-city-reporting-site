@@ -1,6 +1,6 @@
-<div id="top-bar" class="d-none">
+<div id="top-bar" class="">
   <div class="container">
-    <div class="row m-0">
+    <div class="row m-0 d-none">
       <div class="logo col-lg-3 col-md-3">
         <?php if( has_custom_logo() ){ vw_school_education_the_custom_logo();
         }else{ ?>

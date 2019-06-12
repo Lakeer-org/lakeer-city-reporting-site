@@ -24,10 +24,12 @@ $topbackgroundimage = get_field('topbackgroundimage');
 	href="<?php echo esc_url( __( 'http://gmpg.org/xfn/11', 'vw-school-education' ) ); ?>">
 <?php wp_head(); ?>
 <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"/>
+<!--<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"/> !-->
 <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@latest/dist/leaflet.css" />
+  <!--<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>!-->
+  <script src="https://unpkg.com/leaflet@latest/dist/leaflet.js"></script>
   <script src='https://unpkg.com/leaflet.gridlayer.googlemutant@latest/Leaflet.GoogleMutant.js'></script>
 <style type="text/css" id="custom-background-css">
 .container{
@@ -103,7 +105,7 @@ html{
 $(document).ready(function(){
 
 	// When the user scrolls the page, execute myFunction 
-	window.onscroll = function() {myFunction()};
+	//window.onscroll = function() {myFunction()};
 
 	// Get the header
 	var header = document.getElementById("myHeader");
@@ -113,7 +115,7 @@ $(document).ready(function(){
 
 	// Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
 	function myFunction() {
-	  if (window.pageYOffset > (sticky+600)) {
+	  /*if (window.pageYOffset > (sticky+600)) {
 			$(".nav").addClass("stick-bar");
 			$(".city-page-menu-bar").addClass("stick-bar");
 			var logoURL = $("#logo_image").attr("src");
@@ -140,7 +142,7 @@ $(document).ready(function(){
 		else{
 			header.classList.remove("sticky");
 		}
-	  }
+	  }*/
 	}
 });
 </script>

@@ -16,7 +16,11 @@ get_header();
 <meta property="og:description" content="<?php echo get_field("headersubtitle");?>">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="<?php echo get_field("headerimage")['url']; ?>">
-
+<style>
+.middle-align{
+	padding-bottom: 0px !important;
+}
+</style>
 
 <?php if(get_field("headertitle") != ""){?>
 <section class="home_banner_area headerBlock pb-2">
@@ -42,14 +46,14 @@ get_header();
 <?php }?>	
 <?php /*Create the header bar used for showing the section after scroll*/?>
 <div id="story-navigation-bar" class="d-none" style="width: 95%;padding:1rem 2rem;margin-left: 2.5%;background-color: #00F;position:fixed;top:40px;z-index:200">
-<?php for($block_counter = 1 ; $block_counter < 6 ; $block_counter++){?>
+<?php for($block_counter = 1 ; $block_counter < 21 ; $block_counter++){?>
 	<?php if(get_field("block".$block_counter."label") != ""){?>
 		<span style="color: #FFF" class="mr-4"><?php echo get_field("block".$block_counter."label");?></span>
 	<?php }?>
 <?php }?>
 </div>
 
-<?php for($block_counter = 1 ; $block_counter < 6 ; $block_counter++){?>	
+<?php for($block_counter = 1 ; $block_counter < 21 ; $block_counter++){?>	
 <?php if(get_field("block".$block_counter."label") != ""){
 	if(get_field("block".$block_counter."type") == "text"){?>
 		<section class="text_block row block".$block_counter." pb-2">
@@ -59,7 +63,7 @@ get_header();
 	else if(get_field("block".$block_counter."type") == "embed"){?>
 		<section class="embedd_html row block<?php echo $block_counter;?> pb-2">
 		<div id="customHtml<?php echo $block_counter;?>Title" class="ml-5 block_title"><?php echo get_field("block".$block_counter."customhtmltitle");?></div>
-		<div class="row"><?php echo get_field("block".$block_counter."customhtml");?></div>
+		<?php echo get_field("block".$block_counter."customhtml");?>
 		</section>
 	<?php }
 	else if(get_field("block".$block_counter."type") == "image"){
@@ -383,23 +387,49 @@ get_header();
             success: function (data) {
         	  var mymap = L.map(mapElement).setView([17.387140, 78.491684], 11);
 
-        	    // var roadMutant = L.gridLayer.googleMutant({
-        	    //     maxZoom: 20,
-        	    //     type:'roadmap'
-        	    //   }).addTo(mymap);
+        	    var roadMutant = L.gridLayer.googleMutant({
+        	        maxZoom: 20,
+        	        type:'roadmap'
+        	      }).addTo(mymap);
 
-              var CartoDB_Positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-              attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">Positron</a>',
-              subdomains: 'abcd',
-              maxZoom: 19
-              }).addTo(mymap);
+              // var CartoDB_Positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+              // attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">Positron</a>',
+              // subdomains: 'abcd',
+              // maxZoom: 19
+              // }).addTo(mymap);
 
         	    icon_data = [blueIcon, greenIcon, yellowIcon];
-        	    var j = data.length-1;
-        	    L.geoJSON(data[j]['features']).addTo(mymap);
+        	    var j = data[data.length-1].length
+        	    var style_data = data[data.length-1];
+
+        	    
+        	    function polystyle(feature) {
+    						return {
+        					fillColor: 'gray',
+        					weight: 2,
+        					opacity: 1,
+        					color: 'black',  //Outline color
+        					fillOpacity: 0.7
+    						};
+							}
+							var map_styles = {
+        					fillColor: 'gray',
+        					weight: 2,
+        					opacity: 1,
+        					color: 'black',  //Outline color
+        					fillOpacity: 0.7
+    						};
+
+							//loadData(data[j], map_styles, mymap, cities, index_names);
+
+							for (var i=j;i<data.length-1;i++){ 
+
+								loadData(data[i], map_styles, mymap, cities, index_names);
+							}
+        	    //L.geoJSON(data[j], {style: polystyle}).addTo(mymap);
 
         	    for (var i=0;i<j;i++){
-        	      loadData(data[i], icon_data[i], mymap, cities, index_names);
+        	      loadData(data[i], style_data[i], mymap, cities, index_names);
         	    }
               
               var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
@@ -413,12 +443,12 @@ get_header();
               var roadMutant_layer_1 = L.gridLayer.googleMutant({
                   maxZoom: 20,
                   minZoom:10,
-                  type:'terrain'
+                  type:'satellite'
                 });
 
             var baseLayers = {
-                "Grayscale": CartoDB_Positron,
-                "Streets": streets
+                "Grayscale": roadMutant,
+                "Streets": roadMutant_layer_1
             };
           var overlays= {};
           var count=0;
@@ -441,16 +471,98 @@ get_header();
     };
 
     function loadData(indexData, icon_details, mymap, cities, index_names){
-    layerdata = L.geoJSON(indexData, {
-        pointToLayer: function (feature, latlng) {
-            return L.marker(latlng, {icon:icon_details});
-        }
-    }).addTo(cities);
+    var layerdata ;
+    if (icon_details.geometry_type == 'Point' && icon_details.difference_layer.length > 0 && icon_details.buffer_radius != 0){
+	    layerdata = L.geoJSON(indexData, {
+	        pointToLayer: function (feature, latlng) {
+	          		var styles_data = {
+	          			color:icon_details.color,
+	          			strokeColor: icon_details.color,
+        					fillColor: icon_details.color,
+        					fillOpacity: 0.60,
+	          			radius:1000
+	          			//radius: icon_details.buffer_radius
+	          		};
+	          		return L.circle(latlng, styles_data);
+	          	// }
+	        }
+	    }).addTo(cities);
+			
+			// layerdata = L.geoJSON(indexData, {
+   //  			filter: function(feature, layer) {
+   //      	return false;
+   //  		}
+			// }).addTo(cities);
+	    index_names.push(indexData['features'][0].basic_details.type);
+	    layerdata.addTo(mymap);
+	  }
+	  if (icon_details.geometry_type == 'Point' && icon_details.buffer_radius == 0){
+	    layerdata = L.geoJSON(indexData, {
+	        pointToLayer: function (feature, latlng) {
+	          		var styles_data = {
+	          			color:icon_details.color,
+	          			//strokeColor: icon_details.color,
+        					//fillColor: icon_details.color,
+        					//fillOpacity: 0.60,
+	          			radius:150
+	          			//radius: icon_details.buffer_radius
+	          		};
+	          		return L.circle(latlng, styles_data);
+	          	// }
+	        }
+	    }).addTo(cities);
+			
+			// layerdata = L.geoJSON(indexData, {
+   //  			filter: function(feature, layer) {
+   //      	return false;
+   //  		}
+			// }).addTo(cities);
+	    index_names.push(indexData['features'][0].basic_details.type);
+	    layerdata.addTo(mymap);
+	  }
+	  else if(icon_details.geometry_type == 'Polygon')
+	  {
+	  		
+		  	layerdata = L.geoJSON(indexData, {
+	    		style: function(feature) {
+	            return {color: icon_details.color};
+	        }
+	    	}).addTo(cities);
+	    	index_names.push(indexData['features'][0].basic_details.type);
+	    	layerdata.addTo(mymap);
+	  		
+	  }
+	  else if(icon_details.geometry_type == 'LineString') {
+	  	layerdata = L.geoJSON(indexData, {
+  			style: function(feature) {
+      		return icon_details;
+  			}
+	  	}).addTo(cities);
+	  	index_names.push(indexData['features'][0].basic_details.type);
+	  	layerdata.addTo(mymap);
+	  }
+	  else if(icon_details.geometry_type != 'Polygon' && icon_details.geometry_type != 'Point' && icon_details.geometry_type != 'LineString')
+	  {
+	  	layerdata = L.geoJSON(indexData, {
+  			style: function(feature) {
+      		return icon_details;
+  			}
+	  	}).addTo(cities);
+	  	if (!index_names.includes(indexData['features'][0].properties.name)){
+	  		index_names.push(indexData['features'][0].properties.name);
+	  	}
+	  	else{
+	  		index_names.push(indexData['features'][0].properties.name+Math.floor((Math.random() * 10) + 1).toString());
+	  	}
 
-    index_names.push(indexData['features'][0].basic_details.type);
-    layerdata.addTo(mymap);
+	  	layerdata.addTo(mymap);
+	  }
 
-    };
+    //index_names.push(indexData['features'][0].basic_details.type);
+  	
+    
+
+   };
 
     
 	/*var scrollTo = "";
@@ -497,4 +609,44 @@ get_header();
         if ( comments_open() || '0' != get_comments_number() )
         comments_template();
     ?>
+
+<section class="footerSection pt-3" style="background-color: #2C2C2C !important;">
+	<div class="row mr-0">
+		<div class="col-3 pt-1 pb-1 border border-l-0 border-top-0 border-bottom-0">
+			<div class="col-12 text-center">
+				<img src="<?php the_field( 'footerlogoimage', get_field("footersection"));?>">
+			</div>
+			<div class="col-12 text-center">
+				<h3 class="mt-1  text-white"><?php echo the_field( 'footerlabel', get_field("footersection") );?></h3>
+			</div>
+			<div class="col-12 text-center text-muted" style="font-size: 9pt;">
+				<?php echo the_field( 'footersublabel', get_field("footersection") );?>
+			</div>
+			<div class="col-12 text-center">
+				<a class="px-1 border-0 button button--dark button--chromeless is-touchIconBlackPulse u-baseColor--buttonDark button--withIcon button--withSvgIcon is-touched" href="https://twitter.com/lakeer_org" title="Twitter profile" aria-label="Twitter profile" target="_blank">
+					<span class="button-defaultState">
+						<span class="svgIcon svgIcon--twitterFilled svgIcon--21px">
+							<svg class="svgIcon-use" width="21" height="21">
+								<path d="M18.502 4.435a6.892 6.892 0 0 1-2.18.872 3.45 3.45 0 0 0-2.552-1.12 3.488 3.488 0 0 0-3.488 3.486c0 .276.03.543.063.81a9.912 9.912 0 0 1-7.162-3.674c-.3.53-.47 1.13-.498 1.74.027 1.23.642 2.3 1.557 2.92a3.357 3.357 0 0 1-1.555-.44.15.15 0 0 0 0 .06c-.004 1.67 1.2 3.08 2.8 3.42-.3.06-.606.1-.934.12-.216-.02-.435-.04-.623-.06.42 1.37 1.707 2.37 3.24 2.43a7.335 7.335 0 0 1-4.36 1.49L2 16.44A9.96 9.96 0 0 0 7.355 18c6.407 0 9.915-5.32 9.9-9.9.015-.18.01-.33 0-.5A6.546 6.546 0 0 0 19 5.79a6.185 6.185 0 0 1-1.992.56 3.325 3.325 0 0 0 1.494-1.93"></path>
+							</svg>
+						</span>
+					</span>
+				</a>
+				<a class="px-1 border-0 button button--dark button--chromeless is-touchIconBlackPulse u-baseColor--buttonDark button--withIcon button--withSvgIcon button--dark button--chromeless" href="//facebook.com/lakeer.org" title="Facebook page" aria-label="Facebook page" target="_blank">
+					<span class="button-defaultState">
+						<span class="svgIcon svgIcon--facebookFilled svgIcon--21px">
+							<svg class="svgIcon-use" width="21" height="21">
+								<path d="M18.26 10.55c0-4.302-3.47-7.79-7.75-7.79-4.28 0-7.75 3.488-7.75 7.79a7.773 7.773 0 0 0 6.535 7.684v-5.49h-1.89v-2.2h1.89v-1.62c0-1.882 1.144-2.907 2.814-2.907.8 0 1.48.06 1.68.087V8.07h-1.15c-.91 0-1.09.435-1.09 1.07v1.405h2.16l-.28 2.2h-1.88v5.515c3.78-.514 6.7-3.766 6.7-7.71"></path>
+							</svg>
+						</span>
+					</span>
+				</a>
+			</div>
+		</div>
+		<div class="col-9">
+			<?php echo the_field( 'footerdescription', get_field("footersection") );?>
+		</div>
+	</div>
+</section>
+
 <?php get_footer(); ?>
