@@ -61,14 +61,14 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 			$html_content.='</div>';*/
 			
 			$html_content.='<div class="element element_'.$item_id.' '.$item_key.' image_card_below_title"  >';
-			$html_content.= apply_filters('post_grid_filter_grid_item_title',wp_trim_words(get_the_title(), $char_limit,''));
+			$html_content.= apply_filters('post_grid_filter_grid_item_title',wp_trim_words(get_field("headertitle"), $char_limit,''));
 			$html_content.='</div>';
 			}
 
 		elseif($item_key=='issue_notes'){
 
 			//$html_content.= get_field("notes");
-			$excerpt_removed_shortcode = preg_replace( '|\[(.+?)\](.+?\[/\\1\])?|s', '', strip_shortcodes(get_field("notes")));
+			$excerpt_removed_shortcode = preg_replace( '|\[(.+?)\](.+?\[/\\1\])?|s', '', strip_shortcodes(get_field("headersubtitle")));
 			$excerptDotDotDot = '';
 			if(strlen($excerpt_removed_shortcode) > $char_limit){
 				$excerptDotDotDot = '...';
