@@ -9,6 +9,12 @@
  * Set the content width based on the theme's design and stylesheet.
  */
 
+
+add_filter("pre_get_document_title", "changeTitle");
+function changeTitle($old_title){
+    return "City Reporter - Lakeer";
+}
+
 /* Theme Setup */
 if ( ! function_exists( 'vw_school_education_setup' ) ) :
 
