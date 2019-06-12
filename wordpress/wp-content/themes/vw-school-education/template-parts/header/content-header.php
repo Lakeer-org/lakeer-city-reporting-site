@@ -1,4 +1,4 @@
-<div id="top-bar" class="">
+<div id="top-bar" class="d-none">
   <div class="container">
     <div class="row m-0 d-none">
       <div class="logo col-lg-3 col-md-3">

@@ -104,8 +104,24 @@ html{
 <script>
 $(document).ready(function(){
 
-	// When the user scrolls the page, execute myFunction 
-	//window.onscroll = function() {myFunction()};
+	// When the user scrolls the page, execute myFunction
+	if($(".headerBlock").length > 0 || $(".banner_content").length > 0){ 
+		window.onscroll = function() {myFunction()};
+	}
+	else{
+		$(".nav").addClass("stick-bar");
+		var logoURL = $("#logo_image").attr("src");
+		if(logoURL.indexOf("_blue.png") == -1){
+			logoURL = logoURL.replace(".png","_blue.png");
+			$("#logo_image").attr("src",logoURL);
+		}
+		if($("#wpadminbar").length > 0){
+			header.classList.add("sticky-with-menu");
+		}
+		else{
+	    	header.classList.add("sticky");
+		}
+	}
 
 	// Get the header
 	var header = document.getElementById("myHeader");
@@ -115,9 +131,14 @@ $(document).ready(function(){
 
 	// Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
 	function myFunction() {
-	  /*if (window.pageYOffset > (sticky+600)) {
+		var windowHeight = $(window).height();
+		var headerImageHeight = $(".banner_content").height();
+		if($(".headerBlock").length > 0){
+			headerImageHeight = $(".headerBlock").height();
+		}
+	
+	  if (window.pageYOffset > headerImageHeight) {
 			$(".nav").addClass("stick-bar");
-			$(".city-page-menu-bar").addClass("stick-bar");
 			var logoURL = $("#logo_image").attr("src");
 			if(logoURL.indexOf("_blue.png") == -1){
 				logoURL = logoURL.replace(".png","_blue.png");
@@ -131,7 +152,6 @@ $(document).ready(function(){
 			}
 	  } else {
 		  $(".nav").removeClass("stick-bar");
-		  $(".city-page-menu-bar").removeClass("stick-bar");
 		  var logoURL = $("#logo_image").attr("src");
 		  logoURL = logoURL.replace("_blue.png", ".png");
 		  $("#logo_image").attr("src",logoURL);
@@ -142,7 +162,7 @@ $(document).ready(function(){
 		else{
 			header.classList.remove("sticky");
 		}
-	  }*/
+	  }
 	}
 });
 </script>

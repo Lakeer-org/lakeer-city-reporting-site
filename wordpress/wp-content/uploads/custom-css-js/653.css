@@ -3028,8 +3028,9 @@ section img.full-width-image{
 	min-height: 5vh;
 	min-width: 5vh;
 }
-.stick-bar{
-	background-color: #eeeeeedb;
+.stick-bar .fixed-top{
+	background-color: #f8f9fa !important;
+	opacity: 0.8;
 }
 .stick-bar a{
 	color: #005588 !important;

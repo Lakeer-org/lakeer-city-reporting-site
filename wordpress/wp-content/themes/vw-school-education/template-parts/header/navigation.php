@@ -5,10 +5,10 @@
       <div class="col-lg-12 col-md-12 nav">
         <div class = "header_image pl-5 d-none">
 	         <a class="navbar-brand" href="#">
-	           <img id="logo_image" style="max-height: 50px;" src="<?php echo site_url();?>/wp-content/uploads/2019/02/logo.png" alt="">
+	           <img style="max-height: 50px;" src="<?php echo site_url();?>/wp-content/uploads/2019/02/logo.png" alt="">
 	         </a>
         </div>
-        <?php ?><nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <nav class="navbar navbar-expand-lg fixed-top">
 		  <a class="navbar-brand" href="#">
 		  	<img id="logo_image" style="max-height: 50px;" src="<?php echo site_url();?>/wp-content/uploads/2019/02/logo.png" alt="">
 		  </a>
@@ -27,7 +27,6 @@
 		    </ul>
 		  </div>
 		</nav>
-        <?php  ?>
         <?php //wp_nav_menu( array('theme_location'  => 'primary') ); ?>
         
       </div>
