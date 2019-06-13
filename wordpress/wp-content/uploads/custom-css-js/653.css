@@ -3029,8 +3029,10 @@ section img.full-width-image{
 	min-width: 5vh;
 }
 .stick-bar .fixed-top{
-	background-color: #f8f9fa !important;
-	opacity: 0.8;
+	background-color: rgba(255, 255, 255, 0.97);
+  -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
 }
 .stick-bar a{
 	color: #005588 !important;
@@ -3162,6 +3164,7 @@ section img.full-width-image{
 .grid-items .item {
 	background-color: transparent;/*#dcdcdc !important;*/
 	position: relative !important;
+  cursor: pointer;
 }
 .grid-items .item .layer-nav-icons {
     /*bottom: 30px;
@@ -3269,6 +3272,42 @@ section img.full-width-image{
 #comments p{
 	width: 50% !important;
 }
-
+.gray-filter {
+  filter: grayscale(100%);
+}
+.story-section {
+  padding: 5rem;
+}
+.story-section-text h1, .story-section-text h2, .story-section-text h3,
+.story-section-text h4, .story-section-text h5, .story-section-text h6, 
+.story-section-video .videoTitle, .story-section-map .map-title {
+  color: #606060;
+  padding-bottom: 3rem;
+  font-family: Roboto;
+}
+.story-section-text p {
+  letter-spacing: 1px;
+  color: #888 !important;
+  line-height: 32px !important;
+  font-family: Roboto !important;
+  font-size: 18px !important;
+}
+.story-section-image .image-title {
+  width: 100%;
+  font-size: 50px;
+  font-family: 'Montserrat', sans-serif;
+  color: #fff;
+  padding-top: 25%;
+  text-align: center;
+}
+.story-section-image .image-subtitle {
+  width: 100%;
+  font-size: 20px;
+  text-align: center;
+  color: #FFF;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.167;
+  padding-bottom: 25%;
+}
 </style>
 <!-- end Simple Custom CSS and JS -->
