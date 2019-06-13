@@ -36,5 +36,5 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 	$html_media = apply_filters('post_grid_filter_html_media', $html_media);
 	/*Added the custom image added to be shown as the thumb for the Post grid card.*/
 	$html_media = '<img src="' . get_field('headerimage')['url'] . '">';
-	$html.='<div class="layer-media">'.$html_media.'</div>';	
+	$html.='<div class="layer-media"><a target = "_blank" href = "'.get_permalink().'">'.$html_media.'</a></div>';	
 	//$html.='<div class="layer-title">'.get_the_title().'</div>';
