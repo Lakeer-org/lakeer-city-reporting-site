@@ -3309,5 +3309,13 @@ section img.full-width-image{
   line-height: 1.167;
   padding-bottom: 25%;
 }
+.container-fluid.story .alternate-row:nth-child(2n+1) {
+    background-color: #f9f9f9;
+}
+.mapElement {
+  width:100%;
+  height:500px;
+  z-index: 99;
+}
 </style>
 <!-- end Simple Custom CSS and JS -->
