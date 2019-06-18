@@ -756,14 +756,14 @@ get_header();
 <?php the_content(); ?>
 
 <br/><br/>	
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbeQUWgEz3eFMgeJeI4isomnGCq8CrMYs&libraries=geometry,drawing"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<?php echo GOOGLE_MAP_KEY;?>&libraries=geometry,drawing"></script>
     <?php
 		
         // If comments are open or we have at least one comment, load up the comment template
         if ( comments_open() || '0' != get_comments_number() )
         comments_template();
     ?>
-
+<?php if(get_field("footersection") != ""){?>
 <section class="footerSection pt-3" style="background-color: #2C2C2C !important;">
 	<div class="row mr-0">
 		<div class="col-3 pt-1 pb-1 border border-l-0 border-top-0 border-bottom-0">
@@ -802,5 +802,5 @@ get_header();
 		</div>
 	</div>
 </section>
-
+<?php } ?>
 <?php get_footer(); ?>

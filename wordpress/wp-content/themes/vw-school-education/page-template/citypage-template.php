@@ -110,6 +110,7 @@ get_header();
 	</div>
 
 </div>
+<?php if(get_field("footersection") != ""){?>
 <section class="footerSection pt-3" style="background-color: #2C2C2C !important;">
 	<div class="row mr-0">
 		<div class="col-3 pt-1 pb-1 border border-l-0 border-top-0 border-bottom-0">
@@ -148,4 +149,5 @@ get_header();
 		</div>
 	</div>
 </section>
+<?php } ?>
 <?php get_footer(); ?>		
