@@ -115,9 +115,6 @@ html{
 
 
 <script>
-
-
-<script>
 $(document).ready(function(){
 
 	// When the user scrolls the page, execute myFunction
