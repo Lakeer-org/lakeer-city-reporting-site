@@ -3028,8 +3028,8 @@ section img.full-width-image{
 	min-height: 5vh;
 	min-width: 5vh;
 }
-.stick-bar .fixed-top{
-	background-color: rgba(255, 255, 255, 0.97);
+.stick-bar .fixed-top/*.navbar.navbar-light.bg-light*/{
+	background-color: rgba(255, 255, 255, 0.97) !important;
   -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
@@ -3316,6 +3316,38 @@ section img.full-width-image{
   width:100%;
   height:500px;
   z-index: 99;
+}
+.city-container {
+  padding-left: 2.5vw;
+  padding-right: 2.5vw;
+}
+.home-pg-city-card {
+  width: 290px;
+}
+.home-pg-city-card .card-title {
+  color: #555 !important;
+  font-family: 'Roboto';
+  text-align: center;
+}
+.home-pg-city-card .card-img-top {
+  height: 300px;
+  object-fit: cover;
+  padding: 10px;
+}
+.page-title {
+  color: #606060;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  padding-top: 3rem;
+  padding-bottom: 0rem;
+  font-family: Roboto;
+  font-size: 36px !important;
+}
+.city-list {
+  padding-left: 5rem;
+  padding-right: 5rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 </style>
 <!-- end Simple Custom CSS and JS -->

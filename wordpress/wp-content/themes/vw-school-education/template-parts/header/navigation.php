@@ -2,13 +2,13 @@
 <div id="header" class="menubar">
   <div class="container text-right">
     <div class="row bg-home1 mr-0">
-      <div class="col-lg-12 col-md-12 nav">
+      <div class="col-lg-12 col-md-12 col-sm-12 nav">
         <div class = "header_image pl-5 d-none">
 	         <a class="navbar-brand" href="#">
 	           <img style="max-height: 50px;" src="<?php echo site_url();?>/wp-content/uploads/2019/02/logo.png" alt="">
 	         </a>
         </div>
-        <nav class="navbar navbar-expand-lg fixed-top">
+        <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light1">
 		  <a class="navbar-brand" href="#">
 		  	<img id="logo_image" style="max-height: 50px;" src="<?php echo site_url();?>/wp-content/uploads/2019/02/logo.png" alt="">
 		  </a>
