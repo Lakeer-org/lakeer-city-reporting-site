@@ -1,8 +1,8 @@
 <?php /*?><div class="toggle"><a class="toggleMenu" href="#"><?php esc_html_e('Menu','vw-school-education'); ?></a></div><?php */ ?>  
 <div id="header" class="menubar">
   <div class="container text-right">
-    <div class="row bg-home1 mr-0">
-      <div class="col-lg-12 col-md-12 col-sm-12 nav">
+    <div class="row mr-0">
+      <div class="col-lg-12 col-md-12 nav-menu">
         <div class = "header_image pl-5 d-none">
 	         <a class="navbar-brand" href="#">
 	           <img style="max-height: 50px;" src="<?php echo site_url();?>/wp-content/uploads/2019/02/logo.png" alt="">
@@ -12,7 +12,7 @@
 		  <a class="navbar-brand" href="#">
 		  	<img id="logo_image" style="max-height: 50px;" src="<?php echo site_url();?>/wp-content/uploads/2019/02/logo.png" alt="">
 		  </a>
-		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		  <button class="navbar-toggler bg-white" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		    <span class="navbar-toggler-icon"></span>
 		  </button>
 		

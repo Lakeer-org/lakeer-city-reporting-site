@@ -3259,6 +3259,10 @@ section img.full-width-image{
 	.home_banner_area{
 		min-height: 200px;
 	}
+	
+	.city-page-analysis-title{
+		font-size: 35px;
+	}
 }
 
 .comment-form p{

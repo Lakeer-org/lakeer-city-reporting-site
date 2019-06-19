@@ -102,7 +102,6 @@ html{
 }
 </style>
 
-
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo GOOGLE_ANALYTICS_KEY; ?>"></script>
 <script>
@@ -115,6 +114,8 @@ html{
 
 
 <script>
+
+
 $(document).ready(function(){
 
 	// When the user scrolls the page, execute myFunction
@@ -122,7 +123,7 @@ $(document).ready(function(){
 		window.onscroll = function() {myFunction()};
 	}
 	else{
-		$(".nav").addClass("stick-bar");
+		$(".nav-menu").addClass("stick-bar");
 		var logoURL = $("#logo_image").attr("src");
 		if(logoURL.indexOf("_blue.png") == -1){
 			logoURL = logoURL.replace(".png","_blue.png");
@@ -151,7 +152,7 @@ $(document).ready(function(){
 		}
 	
 	  if (window.pageYOffset > headerImageHeight) {
-			$(".nav").addClass("stick-bar");
+			$(".nav-menu").addClass("stick-bar");
 			var logoURL = $("#logo_image").attr("src");
 			if(logoURL.indexOf("_blue.png") == -1){
 				logoURL = logoURL.replace(".png","_blue.png");
@@ -164,7 +165,7 @@ $(document).ready(function(){
 		    	header.classList.add("sticky");
 			}
 	  } else {
-		  $(".nav").removeClass("stick-bar");
+		  $(".nav-menu").removeClass("stick-bar");
 		  var logoURL = $("#logo_image").attr("src");
 		  logoURL = logoURL.replace("_blue.png", ".png");
 		  $("#logo_image").attr("src",logoURL);

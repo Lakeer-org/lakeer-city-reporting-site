@@ -34,7 +34,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 
 	$html_content = '';
 
-	$html.='<div class="layer-content"><a target = "_blank" href = "'.get_permalink().'">';
+	$html.='<div class="layer-content"><a href = "'.get_permalink().'">';
 
 	foreach($layout as $item_id=>$item_info){
 		
