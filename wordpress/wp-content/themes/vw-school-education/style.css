@@ -328,7 +328,7 @@ p.site-description {
 #header {  
   padding: 15px 0;
 }
-#header .nav ul {
+#header .nav-menu ul {
   margin:0; 
   padding:0; 
   font-weight:400; 
@@ -336,26 +336,30 @@ p.site-description {
   text-transform: uppercase;
   font-weight:bold;
 }
-#header .nav ul li{ 
+#header .nav-menu ul li{ 
   display:inline-block; 
   margin:0; 
   position:relative;
 }
-#header .nav ul li a{ 
-  color:#fff; 
+#header .nav-menu ul li a{ 
+  color:#fff !important; 
   padding: 10px;
   display:block;
   font-size: 13px;
 }
-#header .nav ul li a:hover {
+#header .nav-menu ul li a:hover {
   color: #c2272d;
 }
-#header .nav ul ul {
+#header .nav-menu ul ul {
   margin:5% 0 0 0;
 }
-#header .nav ul li:hover > ul li a{
+#header .nav-menu ul li:hover > ul li a{
   border-bottom: solid 1px #eee;
   color: #000;
+}
+
+#header .nav-menu.stick-bar a {
+    color: #005588 !important;
 }
 /*-----------------Search pop up----------------*/
 .serach_inner label {
@@ -1389,7 +1393,7 @@ nav.woocommerce-MyAccount-navigation ul li a{
     float:none; 
     margin:0;
     position:relative; 
-    z-index:1; 
+    /*z-index:1;*/ 
     overflow-x:hidden;
     top: -82px;
   }
