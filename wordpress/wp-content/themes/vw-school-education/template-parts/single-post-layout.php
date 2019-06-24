@@ -540,22 +540,26 @@ get_header();
             dataType: 'json',
             success: function (data) {
         	  var mymap = L.map(mapElement).setView([17.387140, 78.491684], 11);
-
-        	    var roadMutant = L.gridLayer.googleMutant({
-        	        maxZoom: 20,
-        	        type:'roadmap'
-        	      }).addTo(mymap);
-
-              // var CartoDB_Positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-              // attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">Positron</a>',
-              // subdomains: 'abcd',
-              // maxZoom: 19
-              // }).addTo(mymap);
+				//show the grey background map by default
+              	/*var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+                    '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+                    'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>';*/
+                var mbAttr = '';     
+                var  mbUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
+              	
+              	var grayscale   = L.tileLayer(mbUrl, {id: 'mapbox.light', attribution: mbAttr}).addTo(mymap);
+                 var streets  = L.tileLayer(mbUrl, {id: 'mapbox.streets',   attribution: mbAttr});
+              	
+               /*var CartoDB_Positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+               attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">Positron</a>',
+               subdomains: 'cityreporter.lakeer.org',
+               maxZoom: 19
+               }).addTo(mymap);*/
 
         	    icon_data = [blueIcon, greenIcon, yellowIcon];
         	    var j = data[data.length-1].length
         	    var style_data = data[data.length-1];
-
+	    	    $.extend(true,style_data,data[data.length])
         	    
         	    function polystyle(feature) {
     						return {
@@ -585,39 +589,22 @@ get_header();
         	    for (var i=0;i<j;i++){
         	      loadData(data[i], style_data[i], mymap, cities, index_names);
         	    }
-              
-              var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-                    '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-                    'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-                  mbUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
-
-              var grayscale   = L.tileLayer(mbUrl, {id: 'mapbox.light', attribution: mbAttr}),
-                  streets  = L.tileLayer(mbUrl, {id: 'mapbox.streets',   attribution: mbAttr});
-
-              var roadMutant_layer_1 = L.gridLayer.googleMutant({
-                  maxZoom: 20,
-                  minZoom:10,
-                  type:'satellite'
-                });
 
             var baseLayers = {
-                "Grayscale": roadMutant,
-                "Streets": roadMutant_layer_1
+                "Grayscale": grayscale,
+                "Streets": streets
             };
           var overlays= {};
           var count=0;
-          for(var obj in cities){
-            if(cities.hasOwnProperty(obj)){
-              for(var prop in cities[obj]){
-                if(cities[obj].hasOwnProperty(prop)){
-                  overlays[index_names[count]] = cities[obj][prop];
-                  count = count + 1;
-                }
-              }
-            }
-        }
-         
-
+			for(var prop in cities._layers){
+				if(count == 0){count++;continue;}
+				if(style_data[count-1] != undefined){
+					//console.log(prop);
+					//console.log(cities._layers[prop]);	
+			        overlays[style_data[count-1].name + "<div class='leaflet-legend-color' style='background-color:" + style_data[count-1].color + ";'>&nbsp;</div>"] = cities._layers[prop];
+			        count = count + 1;
+				}
+			}
           L.control.layers(baseLayers,overlays).addTo(mymap);
           }
         });  
@@ -702,11 +689,14 @@ get_header();
       		return icon_details;
   			}
 	  	}).addTo(cities);
-	  	if (!index_names.includes(indexData['features'][0].properties.name)){
-	  		index_names.push(indexData['features'][0].properties.name);
-	  	}
-	  	else{
-	  		index_names.push(indexData['features'][0].properties.name+Math.floor((Math.random() * 10) + 1).toString());
+	  	//Check iof we dont receive the features array for the index
+	  	if(indexData['features'] != undefined && indexData['features'].length > 0){
+		  	if (!index_names.includes(indexData['features'][0].properties.name)){
+		  		index_names.push(indexData['features'][0].properties.name);
+		  	}
+		  	else{
+		  		index_names.push(indexData['features'][0].properties.name+Math.floor((Math.random() * 10) + 1).toString());
+		  	}
 	  	}
 
 	  	layerdata.addTo(mymap);
