@@ -610,11 +610,32 @@ get_header();
         });  
         
     };
-
+	/*This function will be used for adding marker popups for all the points plotted on map*/
+    function onEachFeature(feature, layer) {
+        // does this feature have a property named popupContent?
+        var basicDetails = "<div>";
+        if (feature.basic_details) {
+			for(var key in feature.basic_details){
+				if((key != "@id" && key != "id" && key != "Latitude" && key != "Longitude") && feature.basic_details[key] != null){
+					basicDetails = basicDetails + key + ":" + feature.basic_details[key] + "<br/>";
+				}
+			}
+        }else if (feature.properties) {
+			for(var key in feature.properties){
+				if((key != "@id" && key != "id" && key != "Latitude" && key != "Longitude") && feature.properties[key] != null){
+					basicDetails = basicDetails + key + ":" + feature.properties[key] + "<br/>";
+				}
+			}
+        }
+        basicDetails = basicDetails + "</div>";
+        layer.bindPopup(basicDetails);
+    }
+    
     function loadData(indexData, icon_details, mymap, cities, index_names){
     var layerdata ;
     if (icon_details.geometry_type == 'Point' && icon_details.difference_layer.length > 0 && icon_details.buffer_radius != 0){
 	    layerdata = L.geoJSON(indexData, {
+	    	onEachFeature: onEachFeature,
 	        pointToLayer: function (feature, latlng) {
 	          		var styles_data = {
 	          			color:icon_details.color,
@@ -639,6 +660,7 @@ get_header();
 	  }
 	  if (icon_details.geometry_type == 'Point' && icon_details.buffer_radius == 0){
 	    layerdata = L.geoJSON(indexData, {
+	    	onEachFeature: onEachFeature,
 	        pointToLayer: function (feature, latlng) {
 	          		var styles_data = {
 	          			color:icon_details.color,
@@ -665,6 +687,7 @@ get_header();
 	  {
 	  		
 		  	layerdata = L.geoJSON(indexData, {
+		  		onEachFeature: onEachFeature,
 	    		style: function(feature) {
 	            return {color: icon_details.color};
 	        }
@@ -675,6 +698,7 @@ get_header();
 	  }
 	  else if(icon_details.geometry_type == 'LineString') {
 	  	layerdata = L.geoJSON(indexData, {
+	  		onEachFeature: onEachFeature,
   			style: function(feature) {
       		return icon_details;
   			}
@@ -685,6 +709,7 @@ get_header();
 	  else if(icon_details.geometry_type != 'Polygon' && icon_details.geometry_type != 'Point' && icon_details.geometry_type != 'LineString')
 	  {
 	  	layerdata = L.geoJSON(indexData, {
+	  		onEachFeature: onEachFeature,
   			style: function(feature) {
       		return icon_details;
   			}
