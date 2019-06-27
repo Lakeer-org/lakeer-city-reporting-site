@@ -12,6 +12,9 @@ get_header();
 
 function getSectionName($sectionName, $prependHash) {
 	$retVal = strtolower($sectionName);
+	$retVal = str_replace(" - ", " ", $retVal);
+	$retVal = str_replace(" + ", " ", $retVal);
+	$retVal = str_replace(" & ", " ", $retVal);
 	$retVal = str_replace(" ", "-", $retVal);
 
 	if ($prependHash == true)
