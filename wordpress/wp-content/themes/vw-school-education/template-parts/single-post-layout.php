@@ -173,7 +173,9 @@ function getSectionName($sectionName, $prependHash) {
 			else if(get_field("block".$block_counter."type") == "image-text") { ?>
 
 				<div id="<?php echo $sectionName; ?>" class="row alternate-row block<?php echo $block_counter;?>">
-
+					<div class="col-lg-12 col-md-12 col-sm-12">
+						<h2 class="two-column-title"><?php echo get_field("block".$block_counter."label");?></h2>
+					</div>
 					<!-- 1st half -->
 					<div class="col-lg-6 col-md-6 col-sm-12">
 						
@@ -211,6 +213,9 @@ function getSectionName($sectionName, $prependHash) {
 			/* Section of type image + image - start */
 			else if(get_field("block".$block_counter."type") == "image-image") { ?>
 				<div id="<?php echo $sectionName; ?>" class="row alternate-row block<?php echo $block_counter;?>">
+					<div class="col-lg-12 col-md-12 col-sm-12">
+						<h2 class="two-column-title"><?php echo get_field("block".$block_counter."label");?></h2>
+					</div>
 					<div class="col-lg-6 col-md-6 col-sm-12">
 						<div class="story-section story-section-image">
 							<img src="<?php echo get_field("block".$block_counter."combimageimage_image1")['url']; ?>" class="full-width-image" />
@@ -230,7 +235,9 @@ function getSectionName($sectionName, $prependHash) {
 			else if(get_field("block".$block_counter."type") == "image-video") { ?>
 
 				<div id="<?php echo $sectionName; ?>" class="row alternate-row block<?php echo $block_counter;?>">
-
+					<div class="col-lg-12 col-md-12 col-sm-12">
+						<h2 class="two-column-title"><?php echo get_field("block".$block_counter."label");?></h2>
+					</div>
 					<!-- 1st half -->
 					<div class="col-lg-6 col-md-6 col-sm-12">
 						
@@ -269,7 +276,9 @@ function getSectionName($sectionName, $prependHash) {
 			else if(get_field("block".$block_counter."type") == "image-map") { ?>
 
 				<div id="<?php echo $sectionName; ?>" class="row alternate-row block<?php echo $block_counter;?>">
-
+					<div class="col-lg-12 col-md-12 col-sm-12">
+						<h2 class="two-column-title"><?php echo get_field("block".$block_counter."label");?></h2>
+					</div>
 					<!-- 1st half -->
 					<div class="col-lg-6 col-md-6 col-sm-12">
 						
@@ -306,30 +315,31 @@ function getSectionName($sectionName, $prependHash) {
 			/* Section of type image + embed - start  - THIS IS PROBABLEY NOT NEEDED */
 			else if(get_field("block".$block_counter."type") == "image-embed"){
 			?>
-			<section class="pb-2">
-				<div id="<?php echo $sectionName; ?>" class="row alternate-row ml-2">
-					<div class="col-6">
-						<?php if(get_field("block".$block_counter."combimagecusthtml_firstelement") == "image"){?>
-						<div class="image-container">
-						    <img src="<?php echo get_field("block".$block_counter."combimagecusthtml_image")['url']; ?>" class="full-width-image" />
-						    <div class="after"></div>
-						</div>
-						<?php }else{?>
-							<div class="row"><?php echo get_field("block".$block_counter."combimagecusthtml_custhtml");?></div>
-						<?php }?>
-					</div>
-					<div class="col-6 pl-2">
-						<?php if(get_field("block".$block_counter."combimagemap_firstelement") == "image"){?>
-							<div class="row"><?php echo get_field("block".$block_counter."combimagecusthtml_custhtml");?></div>
-						<?php }else{?>
-							<div class="image-container">
-							    <img src="<?php echo get_field("block".$block_counter."combimagemaptype_image")['url']; ?>" class="full-width-image" />
-							    <div class="after"></div>
-							</div>	
-						<?php }?>
-					</div>
+			<div id="<?php echo $sectionName; ?>" class="row alternate-row ml-2">
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					<h2 class="two-column-title"><?php echo get_field("block".$block_counter."label");?></h2>
 				</div>
-			</section>
+				<div class="col-6">
+					<?php if(get_field("block".$block_counter."combimagecusthtml_firstelement") == "image"){?>
+					<div class="image-container">
+					    <img src="<?php echo get_field("block".$block_counter."combimagecusthtml_image")['url']; ?>" class="full-width-image" />
+					    <div class="after"></div>
+					</div>
+					<?php }else{?>
+						<div class="row"><?php echo get_field("block".$block_counter."combimagecusthtml_custhtml");?></div>
+					<?php }?>
+				</div>
+				<div class="col-6 pl-2">
+					<?php if(get_field("block".$block_counter."combimagemap_firstelement") == "image"){?>
+						<div class="row"><?php echo get_field("block".$block_counter."combimagecusthtml_custhtml");?></div>
+					<?php }else{?>
+						<div class="image-container">
+						    <img src="<?php echo get_field("block".$block_counter."combimagemaptype_image")['url']; ?>" class="full-width-image" />
+						    <div class="after"></div>
+						</div>	
+					<?php }?>
+				</div>
+			</div>
 			<?php }
 			/* Section of type image + embed - end */
 
@@ -338,7 +348,9 @@ function getSectionName($sectionName, $prependHash) {
 			else if(get_field("block".$block_counter."type") == "video-text") { ?>
 
 				<div id="<?php echo $sectionName; ?>" class="row alternate-row block<?php echo $block_counter;?>">
-
+					<div class="col-lg-12 col-md-12 col-sm-12">
+						<h2 class="two-column-title"><?php echo get_field("block".$block_counter."label");?></h2>
+					</div>
 					<!-- 1st half -->
 					<div class="col-lg-6 col-md-6 col-sm-12">
 						
@@ -376,6 +388,9 @@ function getSectionName($sectionName, $prependHash) {
 			else if(get_field("block".$block_counter."type") == "video-video") { ?>
 
 				<div id="<?php echo $sectionName; ?>" class="row alternate-row block<?php echo $block_counter;?>">
+					<div class="col-lg-12 col-md-12 col-sm-12">
+						<h2 class="two-column-title"><?php echo get_field("block".$block_counter."label");?></h2>
+					</div>
 					<div class="col-lg-6 col-md-6 col-sm-12">
 						<div class="story-section story-section-video">
 							<div class="row"><?php echo get_field("block".$block_counter."combvideovideo_video1");?></div>
@@ -395,7 +410,9 @@ function getSectionName($sectionName, $prependHash) {
 			else if(get_field("block".$block_counter."type") == "video-map") { ?>
 
 				<div id="<?php echo $sectionName; ?>" class="row alternate-row block<?php echo $block_counter;?>">
-
+					<div class="col-lg-12 col-md-12 col-sm-12">
+						<h2 class="two-column-title"><?php echo get_field("block".$block_counter."label");?></h2>
+					</div>
 					<!-- 1st half -->
 					<div class="col-lg-6 col-md-6 col-sm-12">
 						
@@ -433,7 +450,9 @@ function getSectionName($sectionName, $prependHash) {
 			else if(get_field("block".$block_counter."type") == "map-text") { ?>
 			
 				<div id="<?php echo $sectionName; ?>" class="row alternate-row block<?php echo $block_counter;?>">
-
+					<div class="col-lg-12 col-md-12 col-sm-12">
+						<h2 class="two-column-title"><?php echo get_field("block".$block_counter."label");?></h2>
+					</div>
 					<!-- 1st half -->
 					<div class="col-lg-6 col-md-6 col-sm-12">
 						
@@ -471,29 +490,31 @@ function getSectionName($sectionName, $prependHash) {
 
 			else if(get_field("block".$block_counter."type") == "map-map"){
 			?>
-			<section class="block<?php echo $block_counter;?> pb-2">
-				<div class="row ml-2">
-					<div class="col-6">
-						<div id="map<?php echo $block_counter;?>_text" class="mapElement" mapTypeId="<?php echo get_field("block".$block_counter."combmaptypemaptype_maptype1");?>" style="width:100%;height:500px;"></div>
-					</div>
-					<div class="col-6 pl-2">
-						<div id="map<?php echo $block_counter;?>_text" class="mapElement" mapTypeId="<?php echo get_field("block".$block_counter."combmaptypemaptype_maptype2");?>" style="width:100%;height:500px;"></div>
-					</div>
+			<div id="<?php echo $sectionName; ?>" class="row alternate-row block<?php echo $block_counter;?>">
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					<h2 class="two-column-title"><?php echo get_field("block".$block_counter."label");?></h2>
 				</div>
-			</section>
+				<div class="col-6">
+					<div id="map<?php echo $block_counter;?>_text" class="mapElement" mapTypeId="<?php echo get_field("block".$block_counter."combmaptypemaptype_maptype1");?>" style="width:100%;height:500px;"></div>
+				</div>
+				<div class="col-6 pl-2">
+					<div id="map<?php echo $block_counter;?>_text" class="mapElement" mapTypeId="<?php echo get_field("block".$block_counter."combmaptypemaptype_maptype2");?>" style="width:100%;height:500px;"></div>
+				</div>
+			</div>
 			<?php }
 			else if(get_field("block".$block_counter."type") == "embed-text"){
 			?>
-			<section class="block<?php echo $block_counter;?> pb-2">
-				<div class="row ml-2">
-					<div class="col-6">
-						<div id="map<?php echo $block_counter;?>_text" class="mapElement" mapTypeId="<?php echo get_field("block".$block_counter."combcustomhtmlcustomhtml_customhtml1");?>" style="width:100%;height:500px;"></div>
-					</div>
-					<div class="col-6 pl-2">
-						<div id="map<?php echo $block_counter;?>_text" class="mapElement" mapTypeId="<?php echo get_field("block".$block_counter."combcustomhtmlcustomhtml_customhtml2");?>" style="width:100%;height:500px;"></div>
-					</div>
+			<div id="<?php echo $sectionName; ?>" class="row alternate-row block<?php echo $block_counter;?>">
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					<h2 class="two-column-title"><?php echo get_field("block".$block_counter."label");?></h2>
+				</div>				
+				<div class="col-6">
+					<div id="map<?php echo $block_counter;?>_text" class="mapElement" mapTypeId="<?php echo get_field("block".$block_counter."combcustomhtmlcustomhtml_customhtml1");?>" style="width:100%;height:500px;"></div>
 				</div>
-			</section>			
+				<div class="col-6 pl-2">
+					<div id="map<?php echo $block_counter;?>_text" class="mapElement" mapTypeId="<?php echo get_field("block".$block_counter."combcustomhtmlcustomhtml_customhtml2");?>" style="width:100%;height:500px;"></div>
+				</div>
+			</div>
 		<?php 
 		}	
 		}

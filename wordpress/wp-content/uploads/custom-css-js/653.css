@@ -3299,11 +3299,18 @@ section img.full-width-image{
 }
 .story-section-text h1, .story-section-text h2, .story-section-text h3,
 .story-section-text h4, .story-section-text h5, .story-section-text h6, 
-.story-section-video .videoTitle, .story-section-map .map-title {
+.story-section-video .videoTitle, .story-section-map .map-title, h2.two-column-title {
   color: #606060;
   padding-bottom: 3rem;
   font-family: Roboto;
 }
+
+h2.two-column-title {
+	padding-top: 5rem;
+	text-align: center;
+	padding-bottom: 0 !important;
+}
+
 .story-section-text p {
   letter-spacing: 1px;
   color: #888 !important;
