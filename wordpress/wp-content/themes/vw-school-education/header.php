@@ -115,12 +115,115 @@ html{
 
 <script>
 
+var scrollToClickedStorySection = function (e) {
+	e.preventDefault();
+
+    $(document).off("scroll");
+    
+    $('#navBarStorySections li a.active').removeClass('active');
+    $('#navBarStorySections li.highlighted').removeClass('highlighted');
+
+    $(this).addClass('active');
+    $('a.active').closest('li').addClass('highlighted');
+  
+    var target = this.hash,
+        menu   = target;
+
+    $target = $(target);
+    $('html, body').stop().animate({
+        'scrollTop': $target.offset().top + 2
+    }, 500, 'swing', function () {
+        window.location.hash = target;
+        $(document).on("scroll", onStoryScroll);
+    });
+};
+
+var highlightCurrentSectionInNavbar = function () {
+	var scrollPos = $(document).scrollTop();
+    $('#navBarStorySections a').each( function (k, v) {
+        var currLink = $(this);	// Here this means the anchor tag being iterated
+        
+        targetSectionLink = currLink.attr("href");
+        var refElement = $(targetSectionLink);	// Get value in href of the anchor tag being iterated
+
+        $('#navBarStorySections li a.active').removeClass("active");
+        $('#navBarStorySections li.highlighted').removeClass('highlighted');
+
+        var refElementTop = refElement.position().top - $('#navBarStorySections').height();
+
+        if (refElementTop <= scrollPos && refElementTop + refElement.height() > scrollPos) {
+            currLink.addClass("active");
+            currLink.closest('li').addClass('highlighted');
+            return false;
+        }
+    });
+};
+
+// Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+var onStoryScroll = function() {
+	var windowHeight = $(window).height();
+	var navBarStorySections = $('#navBarStorySections');
+	var headerImageHeight = $(".banner_content").height();
+
+	if($(".headerBlock").length > 0) {
+		headerImageHeight = $(".headerBlock").height();
+	}
+
+
+  	if (window.pageYOffset > headerImageHeight) {
+
+  		// If city story sections are present, then as you scroll down, show navbar with section names
+		if (navBarStorySections.length > 0) {
+			$('#navBarStorySections').removeClass('d-none');
+			$('#header').addClass('d-none');
+
+			highlightCurrentSectionInNavbar();
+
+		} else {
+			$(".nav-menu").addClass("stick-bar");
+			var logoURL = $("#logo_image").attr("src");
+			if(logoURL.indexOf("_blue.png") == -1){
+				logoURL = logoURL.replace(".png","_blue.png");
+				$("#logo_image").attr("src",logoURL);
+			}
+			if($("#wpadminbar").length > 0){
+				header.classList.add("sticky-with-menu");
+			}
+			else {
+		    	header.classList.add("sticky");
+			}
+		}
+
+  	} else {
+
+		if (navBarStorySections.length > 0) {
+			$('#navBarStorySections').addClass('d-none');
+			$('#header').removeClass('d-none');
+
+		} else {
+
+			$(".nav-menu").removeClass("stick-bar");
+			var logoURL = $("#logo_image").attr("src");
+			logoURL = logoURL.replace("_blue.png", ".png");
+			$("#logo_image").attr("src",logoURL);
+			
+		    if($("#wpadminbar").length > 0) {
+		    	header.classList.remove("sticky-with-menu");
+			}
+			else {
+				header.classList.remove("sticky");
+			}
+		}
+  	}
+}
 
 $(document).ready(function(){
 
-	// When the user scrolls the page, execute myFunction
+	$('#navBarStorySections li a').on('click', scrollToClickedStorySection);
+
+	// When the user scrolls the page, execute onStoryScroll
 	if($(".headerBlock").length > 0 || $(".banner_content").length > 0){ 
-		window.onscroll = function() {myFunction()};
+		window.onscroll = onStoryScroll;//function() {onStoryScroll()};
 	}
 	else{
 		$(".nav-menu").addClass("stick-bar");
@@ -143,41 +246,7 @@ $(document).ready(function(){
 	// Get the offset position of the navbar
 	var sticky = header.offsetTop;
 
-	// Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
-	function myFunction() {
-		var windowHeight = $(window).height();
-		var headerImageHeight = $(".banner_content").height();
-		if($(".headerBlock").length > 0){
-			headerImageHeight = $(".headerBlock").height();
-		}
 	
-	  if (window.pageYOffset > headerImageHeight) {
-			$(".nav-menu").addClass("stick-bar");
-			var logoURL = $("#logo_image").attr("src");
-			if(logoURL.indexOf("_blue.png") == -1){
-				logoURL = logoURL.replace(".png","_blue.png");
-				$("#logo_image").attr("src",logoURL);
-			}
-			if($("#wpadminbar").length > 0){
-				header.classList.add("sticky-with-menu");
-			}
-			else{
-		    	header.classList.add("sticky");
-			}
-	  } else {
-		  $(".nav-menu").removeClass("stick-bar");
-		  var logoURL = $("#logo_image").attr("src");
-		  logoURL = logoURL.replace("_blue.png", ".png");
-		  $("#logo_image").attr("src",logoURL);
-			
-	    if($("#wpadminbar").length > 0){
-	    	header.classList.remove("sticky-with-menu");
-		}
-		else{
-			header.classList.remove("sticky");
-		}
-	  }
-	}
 });
 </script>
 </head>

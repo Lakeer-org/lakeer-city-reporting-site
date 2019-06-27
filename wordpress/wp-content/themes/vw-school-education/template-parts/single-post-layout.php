@@ -22,9 +22,31 @@ get_header();
 }
 </style>
 
+<nav class="navbar navbar-expand-lg navbar-light bg-light d-none sticky px-3" id="navBarStorySections">
+  <?php if(get_field("headertitle") != ""){?>
+  	<a class="navbar-brand" href="#section0"><?php echo get_field("headertitle");?></a>
+  <?php }?>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-city-story-items" aria-controls="navbar-city-story" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbar-city-story-items">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <?php for($block_counter = 1 ; $block_counter < 21 ; $block_counter++){?>
+      	<?php if(get_field("block".$block_counter."label") != ""){?>
+	      <li class="nav-item">
+	        <a class="nav-link" href="#section<?php echo $block_counter;?>"><?php echo get_field("block".$block_counter."label");?></a>
+	      </li>
+	    <?php }?>
+	   <?php }?>
+    </ul>
+  </div>
+</nav>
+
 <div class="container-fluid story">
 
-
+	<!-- Remove block - from here -->
 	<?php /*Create the header bar used for showing the section after scroll*/?>
 	<div id="story-navigation-bar" class="d-none row" style="width: 95%;padding:1rem 2rem;margin-left: 2.5%;background-color: #00F;position:fixed;top:40px;z-index:200">
 	<?php for($block_counter = 1 ; $block_counter < 21 ; $block_counter++){?>
@@ -33,8 +55,9 @@ get_header();
 		<?php }?>
 	<?php }?>
 	</div>
+	<!-- Remove block - until here -->
 
-	<div class="row">
+	<div id="section0" class="row">
 		<?php if(get_field("headertitle") != ""){?>
 
 		<!-- Header - start -->
@@ -64,7 +87,7 @@ get_header();
 
 			/* Section of type text - start */
 			if(get_field("block".$block_counter."type") == "text") { ?>
-				<div class="row alternate-row block<?php echo $block_counter;?>">
+				<div id="section<?php echo $block_counter;?>" class="row alternate-row block<?php echo $block_counter;?>">
 					<div class="col-lg-12 col-md-12 col-sm-12">
 						<div class="story-section story-section-text">
 							<?php echo get_field("block".$block_counter."text");?>
@@ -77,7 +100,7 @@ get_header();
 			/* Section of type embed - start - THIS IS PROBABLY NOT NEEDED */
 			else if(get_field("block".$block_counter."type") == "embed") {?>
 
-				<div class="row alternate-row block<?php echo $block_counter;?>">
+				<div id="section<?php echo $block_counter;?>" class="row alternate-row block<?php echo $block_counter;?>">
 					<div class="col-lg-12 col-md-12 col-sm-12">
 						<div id="customHtml<?php echo $block_counter;?>Title" class="story-section-text">
 							<?php echo get_field("block".$block_counter."customhtmltitle");?>
@@ -91,7 +114,7 @@ get_header();
 			/* Section of type image - start */
 			else if(get_field("block".$block_counter."type") == "image") { ?>
 
-				<div class="row alternate-row block<?php echo $block_counter;?>">
+				<div id="section<?php echo $block_counter;?>" class="row alternate-row block<?php echo $block_counter;?>">
 					<div class="col-lg-12 col-md-12 col-sm-12 px-0">
 						<div class="story-section story-section-image" style="background-image:linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5) ), url('<?php echo get_field("block".$block_counter."image")['url']; ?>');background-size: cover;">
 							
@@ -116,7 +139,7 @@ get_header();
 			/* Section of type video - start */
 			else if(get_field("block".$block_counter."type") == "video") {?>
 
-				<div class="row alternate-row block<?php echo $block_counter;?>">
+				<div id="section<?php echo $block_counter;?>" class="row alternate-row block<?php echo $block_counter;?>">
 					<div class="col-lg-12 col-md-12 col-sm-12">
 						<center id="video1Title" class="story-section story-section-video">
 							<h2 class="videoTitle"><?php echo get_field("block".$block_counter."videotitle");?></h2>
@@ -131,7 +154,7 @@ get_header();
 			/* Section of type map - start */
 			else if(get_field("block".$block_counter."type") == "map") { ?>
 
-				<div class="row alternate-row block<?php echo $block_counter;?>">
+				<div id="section<?php echo $block_counter;?>" class="row alternate-row block<?php echo $block_counter;?>">
 					<div class="col-lg-12 col-md-12 col-sm-12">
 						<center id="map1Title" class="story-section story-section-map">
 							<h2 class="map-title"><?php echo get_field("block".$block_counter."maptitle");?></h2>
@@ -146,7 +169,7 @@ get_header();
 			/* Section of type image + text - start */			
 			else if(get_field("block".$block_counter."type") == "image-text") { ?>
 
-				<div class="row alternate-row block<?php echo $block_counter;?>">
+				<div id="section<?php echo $block_counter;?>" class="row alternate-row block<?php echo $block_counter;?>">
 
 					<!-- 1st half -->
 					<div class="col-lg-6 col-md-6 col-sm-12">
@@ -184,7 +207,7 @@ get_header();
 
 			/* Section of type image + image - start */
 			else if(get_field("block".$block_counter."type") == "image-image") { ?>
-				<div class="row alternate-row block<?php echo $block_counter;?>">
+				<div id="section<?php echo $block_counter;?>" class="row alternate-row block<?php echo $block_counter;?>">
 					<div class="col-lg-6 col-md-6 col-sm-12">
 						<div class="story-section story-section-image">
 							<img src="<?php echo get_field("block".$block_counter."combimageimage_image1")['url']; ?>" class="full-width-image" />
@@ -203,7 +226,7 @@ get_header();
 			/* Section of type image + video - start */
 			else if(get_field("block".$block_counter."type") == "image-video") { ?>
 
-				<div class="row alternate-row block<?php echo $block_counter;?>">
+				<div id="section<?php echo $block_counter;?>" class="row alternate-row block<?php echo $block_counter;?>">
 
 					<!-- 1st half -->
 					<div class="col-lg-6 col-md-6 col-sm-12">
@@ -242,7 +265,7 @@ get_header();
 			/* Section of type image + map - start */
 			else if(get_field("block".$block_counter."type") == "image-map") { ?>
 
-				<div class="row alternate-row block<?php echo $block_counter;?>">
+				<div id="section<?php echo $block_counter;?>" class="row alternate-row block<?php echo $block_counter;?>">
 
 					<!-- 1st half -->
 					<div class="col-lg-6 col-md-6 col-sm-12">
@@ -281,7 +304,7 @@ get_header();
 			else if(get_field("block".$block_counter."type") == "image-embed"){
 			?>
 			<section class="pb-2">
-				<div class="row alternate-row ml-2">
+				<div id="section<?php echo $block_counter;?>" class="row alternate-row ml-2">
 					<div class="col-6">
 						<?php if(get_field("block".$block_counter."combimagecusthtml_firstelement") == "image"){?>
 						<div class="image-container">
@@ -311,7 +334,7 @@ get_header();
 			/* Section of type video + text - start  */
 			else if(get_field("block".$block_counter."type") == "video-text") { ?>
 
-				<div class="row alternate-row block<?php echo $block_counter;?>">
+				<div id="section<?php echo $block_counter;?>" class="row alternate-row block<?php echo $block_counter;?>">
 
 					<!-- 1st half -->
 					<div class="col-lg-6 col-md-6 col-sm-12">
@@ -349,7 +372,7 @@ get_header();
 			/* Section of type video + video - start  */
 			else if(get_field("block".$block_counter."type") == "video-video") { ?>
 
-				<div class="row alternate-row block<?php echo $block_counter;?>">
+				<div id="section<?php echo $block_counter;?>" class="row alternate-row block<?php echo $block_counter;?>">
 					<div class="col-lg-6 col-md-6 col-sm-12">
 						<div class="story-section story-section-video">
 							<div class="row"><?php echo get_field("block".$block_counter."combvideovideo_video1");?></div>
@@ -368,7 +391,7 @@ get_header();
 			/* Section of type video + map - start  */
 			else if(get_field("block".$block_counter."type") == "video-map") { ?>
 
-				<div class="row alternate-row block<?php echo $block_counter;?>">
+				<div id="section<?php echo $block_counter;?>" class="row alternate-row block<?php echo $block_counter;?>">
 
 					<!-- 1st half -->
 					<div class="col-lg-6 col-md-6 col-sm-12">
@@ -406,7 +429,7 @@ get_header();
 			/* Section of type map + text - start  */
 			else if(get_field("block".$block_counter."type") == "map-text") { ?>
 			
-				<div class="row alternate-row block<?php echo $block_counter;?>">
+				<div id="section<?php echo $block_counter;?>" class="row alternate-row block<?php echo $block_counter;?>">
 
 					<!-- 1st half -->
 					<div class="col-lg-6 col-md-6 col-sm-12">
@@ -599,9 +622,26 @@ get_header();
 			for(var prop in cities._layers){
 				if(count == 0){count++;continue;}
 				if(style_data[count-1] != undefined){
-					//console.log(prop);
-					//console.log(cities._layers[prop]);	
-			        overlays[style_data[count-1].name + "<div class='leaflet-legend-color' style='background-color:" + style_data[count-1].color + ";'>&nbsp;</div>"] = cities._layers[prop];
+
+					var geometry_type = style_data[count-1].geometry_type;
+					var style = '';
+					switch (geometry_type) {
+						case 'Point': 
+							style = "style= 'background-color: " + style_data[count-1].color + ";'";
+							break;
+						case 'Polygon': 
+							style = "style= 'background-color: " + style_data[count-1].color + ";'";
+							break;
+						case 'LineString': 
+							style = "style= 'border-bottom-color: " + style_data[count-1].color + ";'";
+							break;
+						default:
+							style = "style= 'background-color: " + style_data[count-1].color + ";'";
+							break;
+					}
+
+					overlays["<div class='leaflet-legend "+ geometry_type + "' " + style + ">&nbsp;</div>" + style_data[count-1].name ] = cities._layers[prop];
+			        //overlays[style_data[count-1].name + "<div class='leaflet-legend-color' style='background-color:" + style_data[count-1].color + ";'>&nbsp;</div>"] = cities._layers[prop];
 			        count = count + 1;
 				}
 			}
