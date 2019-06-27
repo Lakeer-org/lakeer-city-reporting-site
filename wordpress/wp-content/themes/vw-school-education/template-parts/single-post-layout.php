@@ -11,7 +11,7 @@
 get_header();
 ?>
 <!-- This image is used for showing when sharing on FaceBook -->
-<meta name='og:image' content='<?php echo get_field("headerimage")['url']; ?>'>
+<meta property='og:image' content='<?php echo get_field("headerimage")['url']; ?>'>
 <meta property="og:title" content="<?php echo get_field("headertitle");?>">
 <meta property="og:description" content="<?php echo get_field("headersubtitle");?>">
 <meta name="twitter:card" content="summary">
@@ -673,7 +673,7 @@ get_header();
     
     function loadData(indexData, icon_details, mymap, cities, index_names){
     var layerdata ;
-    if (icon_details.geometry_type == 'Point' && icon_details.difference_layer.length > 0 && icon_details.buffer_radius != 0){
+    if (icon_details.geometry_type == 'Point' && (icon_details.difference_layer != null && icon_details.difference_layer.length) > 0 && icon_details.buffer_radius != 0){
 	    layerdata = L.geoJSON(indexData, {
 	    	onEachFeature: onEachFeature,
 	        pointToLayer: function (feature, latlng) {
@@ -698,8 +698,15 @@ get_header();
 	    index_names.push(indexData['features'][0].basic_details.type);
 	    layerdata.addTo(mymap);
 	  }
-	  if (icon_details.geometry_type == 'Point' && icon_details.buffer_radius == 0){
-	    layerdata = L.geoJSON(indexData, {
+    if (icon_details.geometry_type == 'Point'){
+		   var radiusValue = icon_details.buffer_radius;
+		   //If buffer radius is received from the JSON then multiple it by 1000 as the radius is received in KM and for leaflet we are required to give in meters
+		   //If buffered radius is 0 as received from JSON then set it to 250 meters  
+		   if(radiusValue == 0)
+			   radiusValue = 250;//Value in meters
+		   else
+			   radiusValue = radiusValue * 1000;
+		    layerdata = L.geoJSON(indexData, {
 	    	onEachFeature: onEachFeature,
 	        pointToLayer: function (feature, latlng) {
 	          		var styles_data = {
@@ -707,7 +714,7 @@ get_header();
 	          			//strokeColor: icon_details.color,
         					//fillColor: icon_details.color,
         					//fillOpacity: 0.60,
-	          			radius:150
+	          			radius:radiusValue //Value in meters
 	          			//radius: icon_details.buffer_radius
 	          		};
 	          		return L.circle(latlng, styles_data);

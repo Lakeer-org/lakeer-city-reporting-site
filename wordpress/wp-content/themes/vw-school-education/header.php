@@ -20,6 +20,22 @@ $topbackgroundimage = get_field('topbackgroundimage');
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width">
+
+<!-- Add meta tags to be used when sharing the Story / city page on social networking sites -->
+<?php if(get_field("headerimage") != ""){?>
+<meta property='og:image' content='<?php echo get_field("headerimage")['url']; ?>'>
+<meta property="og:title" content="<?php echo get_field("headertitle");?>">
+<meta property="og:description" content="<?php echo get_field("headersubtitle");?>">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="<?php echo get_field("headerimage")['url']; ?>">
+<?php }else if(get_field("page_background_image") != ""){?>
+<meta property='og:image' content='<?php echo get_field("page_background_image")['url']; ?>'>
+<meta property="og:title" content="<?php echo get_field("block_title");?>">
+<meta property="og:description" content="<?php echo get_field("block_notes");?>">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="<?php echo get_field("page_background_image")['url']; ?>">
+<?php }?>
+
 <link rel="profile"
 	href="<?php echo esc_url( __( 'http://gmpg.org/xfn/11', 'vw-school-education' ) ); ?>">
 <?php wp_head(); ?>
