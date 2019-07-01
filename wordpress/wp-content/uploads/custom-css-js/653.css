@@ -3005,7 +3005,9 @@ section img.full-width-image{
   text-align: center;
   color: #FFF;
   font-family:'Montserrat', sans-serif;
-  line-height: 1.167;
+  line-height: 1.8;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 .city-page-analysis-notes{
   width: 100%;
@@ -3035,6 +3037,12 @@ section img.full-width-image{
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+}
+
+@media (max-width: 991px) {
+  #navBarStorySections {
+    padding: 16px 8px;
+  }
 }
 #navBarStorySections .nav-link.active {
     font-size: 1rem;
@@ -3277,7 +3285,11 @@ section img.full-width-image{
 	
 	.city-page-analysis-title{
 		font-size: 35px;
+    line-height: 45px;
 	}
+  .city-page-analysis-subtitle {
+    font-size: 18px;
+  }
 }
 
 .comment-form p{
@@ -3296,6 +3308,11 @@ section img.full-width-image{
 }
 .story-section {
   padding: 5rem;
+}
+@media (max-width: 768px) {
+  .story-section {
+    padding: 3rem 1.5rem;
+  }  
 }
 .story-section-text h1, .story-section-text h2, .story-section-text h3,
 .story-section-text h4, .story-section-text h5, .story-section-text h6, 
@@ -3326,14 +3343,26 @@ h2.two-column-title {
   padding-top: 25%;
   text-align: center;
 }
+@media (max-width: 450px) {
+  .story-section-image .image-title {
+    font-size: 35px;
+    line-height: 45px;
+  }
+}
+
 .story-section-image .image-subtitle {
   width: 100%;
   font-size: 20px;
   text-align: center;
   color: #FFF;
   font-family: 'Montserrat', sans-serif;
-  line-height: 1.167;
+  line-height: 1.8;
   padding-bottom: 25%;
+}
+@media (max-width: 768px) {
+  .story-section-image .image-subtitle  {
+    font-size: 15px;
+  }  
 }
 
 .container-fluid.story .alternate-row:nth-child(2n+1) {
