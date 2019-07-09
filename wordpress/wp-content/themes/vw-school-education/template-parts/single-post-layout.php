@@ -69,10 +69,10 @@ function getSectionName($sectionName, $prependHash) {
 		<section class="home_banner_area headerBlock pb-2 col-12 px-0">
 			<div class="container">
 				<div class="banner_content gray-filter" style="background-image:linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5) ), url('<?php echo get_field("headerimage")['url']; ?>');background-size: cover;">
-					<div class="city-page-analysis-title text-uppercase">
+					<div class="city-page-analysis-title">
 						<?php echo get_field("headertitle");?>
 					</div>
-					<div class="city-page-analysis-subtitle pt-5 text-uppercase">
+					<div class="city-page-analysis-subtitle pt-5">
 						<?php echo get_field("headersubtitle");?>
 					</div>
 				</div>
@@ -497,29 +497,36 @@ function getSectionName($sectionName, $prependHash) {
 				<div class="col-lg-12 col-md-12 col-sm-12">
 					<h2 class="two-column-title"><?php echo get_field("block".$block_counter."label");?></h2>
 				</div>
-				<div class="col-6">
+				<div class="col-lg-6 col-md-6 col-sm-12">
 					<div id="map<?php echo $block_counter;?>_text" class="mapElement" mapTypeId="<?php echo get_field("block".$block_counter."combmaptypemaptype_maptype1");?>" style="width:100%;height:500px;"></div>
 				</div>
-				<div class="col-6 pl-2">
+				<div class="col-lg-6 col-md-6 col-sm-12">
 					<div id="map<?php echo $block_counter;?>_text" class="mapElement" mapTypeId="<?php echo get_field("block".$block_counter."combmaptypemaptype_maptype2");?>" style="width:100%;height:500px;"></div>
 				</div>
 			</div>
 			<?php }
+
+			/* Section of type customhtml + text - custom html supports chart, html, text, text wrapped around image  - start */
 			else if(get_field("block".$block_counter."type") == "embed-text"){
 			?>
 			<div id="<?php echo $sectionName; ?>" class="row alternate-row block<?php echo $block_counter;?>">
 				<div class="col-lg-12 col-md-12 col-sm-12">
 					<h2 class="two-column-title"><?php echo get_field("block".$block_counter."label");?></h2>
 				</div>				
-				<div class="col-6">
-					<div id="map<?php echo $block_counter;?>_text" class="mapElement" mapTypeId="<?php echo get_field("block".$block_counter."combcustomhtmlcustomhtml_customhtml1");?>" style="width:100%;height:500px;"></div>
+				<div class="col-lg-6 col-md-6 col-sm-12">
+					<div class="story-section story-section-text">
+                        <?php echo get_field("block".$block_counter."combcustomhtmlcustomhtml_customhtml1");?>
+                    </div>
 				</div>
-				<div class="col-6 pl-2">
-					<div id="map<?php echo $block_counter;?>_text" class="mapElement" mapTypeId="<?php echo get_field("block".$block_counter."combcustomhtmlcustomhtml_customhtml2");?>" style="width:100%;height:500px;"></div>
+				<div class="col-lg-6 col-md-6 col-sm-12">>
+					<div class="story-section story-section-text">
+						<?php echo get_field("block".$block_counter."combcustomhtmlcustomhtml_customhtml2");?>
+                    </div>
 				</div>
 			</div>
 		<?php 
-		}	
+		}
+		/* Section of type customhtml + text - custom html supports chart, html, text, text wrapped around image  - end */	
 		}
 		?>
 

@@ -2996,8 +2996,9 @@ section img.full-width-image{
 	font-size: 60px;
 	font-family: 'Montserrat', sans-serif;
 	color: #fff;
-	padding-top: 45vh;
+	padding-top: 40vh;
 	text-align: center;
+  line-height: 80px;
 }
 .city-page-analysis-subtitle{
   width: 100%;
@@ -3436,6 +3437,12 @@ h2.two-column-title {
   border-bottom-style: solid;
   border-bottom-width: thick;
   margin: 0 0.5rem 0 0.5rem;
+}
+.footerSection {
+  background-color: #2C2C2C !important;
+}
+.social-media-logo {
+  color: $9a9a9a;
 }
 </style>
 <!-- end Simple Custom CSS and JS -->
