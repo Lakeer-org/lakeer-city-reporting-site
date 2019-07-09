@@ -108,8 +108,15 @@ function getSectionName($sectionName, $prependHash) {
 
 				<div id="<?php echo $sectionName; ?>" class="row alternate-row block<?php echo $block_counter;?>">
 					<div class="col-lg-12 col-md-12 col-sm-12">
-						<div id="customHtml<?php echo $block_counter;?>Title" class="story-section-text">
-							<?php echo get_field("block".$block_counter."customhtmltitle");?>
+						<div id="customHtml<?php echo $block_counter;?>Title" class="story-section story-section-text">
+							
+							<?php if(get_field("block".$block_counter."customhtmltitle") != ""){ ?>
+							<h2 class="text-center">
+								<?php echo get_field("block".$block_counter."customhtmltitle");?>
+							</h2>
+							<?php }?>
+
+							
 							<?php echo get_field("block".$block_counter."customhtml");?>
 						</div>
 					</div>
